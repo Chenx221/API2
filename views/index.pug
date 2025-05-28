@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p
+    | API说明：
+    a(href="/listAllVersion" target="_blank") List All Version
+    | 、
+    code https://api.iloli.one/checkUpdate?sha256=[sha256](&noCache=[true/false])
