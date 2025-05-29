@@ -4,7 +4,7 @@ import {getVersionMap} from "../utils/parseVersions.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    const {sha256,noCache} = req.query;
+    const {sha256, noCache} = req.query;
 
     if (!sha256) {
         return res.status(400).json({error: "Missing required parameter: sha256"});
@@ -28,10 +28,9 @@ router.get("/", async (req, res) => {
                 return res.status(404).json({error: "No versions available"});
             }
 
-            const [latestSha, meta] = latest;
+            const [, meta] = latest;
             return res.json({
                 update: true,
-                latest_sha256: latestSha,
                 current_release_date: "unknown",
                 ...meta
             });
@@ -41,20 +40,25 @@ router.get("/", async (req, res) => {
             ([, meta]) => meta.compiler === current.compiler && meta.arch === current.arch
         );
 
-        filtered.sort((a, b) => new Date(b[1].release_date) - new Date(a[1].release_date));
-        const latestSameType = filtered[0];
+        const latestDate = filtered.reduce((latest, [, meta]) => {
+            const date = new Date(meta.release_date).getTime();
+            return date > latest ? date : latest;
+        }, 0);
 
-        if (latestSameType && latestSameType[0] !== normalized) {
-            const [latestSha, meta] = latestSameType;
-            return res.json({
-                update: true,
-                latest_sha256: latestSha,
-                current_release_date: current.release_date,
-                ...meta
-            });
+        const currentDate = new Date(current.release_date).getTime();
+
+        if (currentDate === latestDate) {
+            return res.json({update: false, message: "Already up-to-date"});
         }
 
-        return res.json({update: false, message: "Already up-to-date"});
+        const latest = filtered.find(([, meta]) => new Date(meta.release_date).getTime() === latestDate);
+        const [, meta] = latest;
+
+        return res.json({
+            update: true,
+            current_release_date: current.release_date,
+            ...meta
+        });
     } catch (err) {
         console.error("checkUpdate error:", err);
         res.status(500).json({error: "Internal server error"});
