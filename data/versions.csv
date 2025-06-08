@@ -97,3 +97,7 @@ vs2022,x64,2025-06-02,https://github.com/Chenx221/Textractor/releases/download/d
 vs2022,x86,2025-06-02,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250602_msvc22.7z,25cf6241dcf8b87101ff10e2de017cb14a99c22d4c10c478d9f96cfa9fe86c99
 vs2019,x64,2025-06-02,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250602.7z,233a0b7b4ebc4620e6c7d414a1f8220e42f790cc0eeb98522dd4cd14ee76fe90
 vs2019,x86,2025-06-02,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250602.7z,90bff9a439c18bd578ddbf639e6efdc00ccf0d4e883d35cb513ce2115aaa066d
+vs2022,x64,2025-06-08,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250608_msvc22.7z,C13ADFB5A793FFBFD7B6F3DEF846C6D673966ACA474A48EF3E85A495B855CC21
+vs2022,x86,2025-06-08,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250608_msvc22.7z,7979A4A224A76F1B8B999AC432F594649347D9A58041A7D823605118DE5B3012
+vs2019,x64,2025-06-08,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250608.7z,51F4268996B10548980477DAE8F66C34B3D9A0EE4E8AC452056D02D41552DDC7
+vs2019,x86,2025-06-08,https://github.com/Chenx221/Textractor/releases/download/dev/texthook_250608.7z,B9B4F74DCC3A797B84CBF14B2F2B19164001320770E5961385A62B9AEBE0BD8F
