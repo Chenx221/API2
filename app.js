@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 
 import indexRouter from './routes/index.js';
 import checkUpdateRouter from './routes/checkUpdate.js';
+import checkLatestRouter from './routes/checkLatest.js';
 import listAllVersionRouter from './routes/listAllVersion.js';
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/checkUpdate', checkUpdateRouter);
+app.use('/checkLatest', checkLatestRouter);
 app.use('/listAllVersion', listAllVersionRouter);
 
 
